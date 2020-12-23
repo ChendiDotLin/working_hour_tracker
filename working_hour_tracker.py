@@ -74,7 +74,9 @@ def update_date(argv):
 	# calmap.yearplot(events, year=2020)
 	fig.colorbar(ax[0].get_children()[1], ax=ax.ravel().tolist(),orientation='horizontal')
 	fig.suptitle('Irony of a sleeper',fontsize=40)
-	fig.savefig('tracking.png')
+	figname = os.path.dirname(os.path.realpath(__file__))+'/tracking.png'
+
+	fig.savefig(figname)
 	# plt.show()
 
 if __name__ == '__main__':
