@@ -29,7 +29,9 @@ def update_date(argv):
 		else:
 			hrs = '0'
 	# the date is in the format of: y, m, d, hrs
-	file_name = os.getcwd()+'/data.txt'
+	file_name = os.path.dirname(os.path.realpath(__file__))+'/data.txt'
+	# print(os.path.dirname(os.path.realpath(__file__)))
+
 	data = np.loadtxt(file_name,dtype=str,delimiter=',')
 	if hrs!='0':
 		date = str(year)+"-"+str(month)+"-"+str(day)
