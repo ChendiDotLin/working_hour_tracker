@@ -13,7 +13,7 @@ from matplotlib import pyplot as plt
 
 
 def update_date(argv):
-	print(argv)
+	# print(argv)
 	if len(argv)==4:
 		year = argv[0]
 		month = argv[1]
@@ -33,7 +33,6 @@ def update_date(argv):
 	data = np.loadtxt(file_name,dtype=str,delimiter=',')
 	if hrs!='0':
 		date = str(year)+"-"+str(month)+"-"+str(day)
-		new = 2
 		# print (d.year, d.month, d.day)
 
 
@@ -48,7 +47,7 @@ def update_date(argv):
 		for i in range(len(data)):
 			if date==data[i,0]:
 				data[i,1]  = float(hrs) + float(data[i,1])
-				print(data[i,1])
+				# print(data[i,1])
 				flag = False
 				break
 		if flag:
@@ -61,12 +60,11 @@ def update_date(argv):
 	# webbrowser.open(url,new=new)
 
 	# days = (d - datetime.datetime(2020,4,13)).days
-	days = data.shape[0]
 
 	# all_days = pd.date_range('4/13/2020', periods=days, freq='D')
 	# days = np.random.choice(all_days, 500)
 	events = pd.Series([float(i) for i in data[:,1]], index=pd.to_datetime(data[:,0]))
-	print(events)
+	print(events[-5:])
 	fig,ax = calmap.calendarplot(events, monthticks=1, daylabels='MTWTFSS',
                     dayticks=[0, 1, 2, 3, 4, 5, 6], cmap='YlGn',
                     fillcolor='silver', linewidth=0.5,
